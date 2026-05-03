@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "demo-app.fullname" . }}
+  namespace: {{ include "demo-app.namespace" . }}
+  labels:
+    app: {{ include "demo-app.name" . }}
+
+spec:
+  replicas: {{ include "demo-app.replicas" . }}
+  selector:
+    matchLabels:
+      app: {{ include "demo-app.name" . }}
+
+  template:
+    metadata:
+      labels:
+        app: {{ include "demo-app.name" . }}
+
+    spec:
+      containers:
+        - name: {{ include "demo-app.name" . }}
+          image: {{ include "demo-app.image.repository" . }}:{{ include "demo-app.image.tag" . }}
+          ports:
+            - containerPort: {{ include "demo-app.containerPort" . }}
+
+          resources:
+            requests:
+              cpu: {{ .Values.resources.requests.cpu }}
+            limits:
+              cpu: {{ .Values.resources.limits.cpu }}
