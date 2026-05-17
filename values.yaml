@@ -3,7 +3,7 @@ replicas: 1
 
 image:
   repository: sajit21/flask-app
-  tag: deb1e8e189d329a30d68cb236e6cf14632e4f3a8
+  tag: ae695f8ffb757126ee470975720d71439c0ada63
 
 containerPort: 5000
 
