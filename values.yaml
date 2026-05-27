@@ -2,7 +2,7 @@ namespace: demo-app
 replicas: 1
 image:
   repository: sajit21/flask-app
-  tag: ae755a36ef666c2bb6cd3fb6ff2d1cacd5972060
+  tag: 13f59e534f2fafd8269479991b4693f3083e23c3
 containerPort: 5000
 service:
   nodePort: 30088
