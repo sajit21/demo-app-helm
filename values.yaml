@@ -1,20 +1,15 @@
 namespace: demo-app
 replicas: 1
-
 image:
   repository: sajit21/flask-app
-  tag: ae695f8ffb757126ee470975720d71439c0ada63
-
+  tag: ae755a36ef666c2bb6cd3fb6ff2d1cacd5972060
 containerPort: 5000
-
 service:
   nodePort: 30088
-
 hpa:
   minReplicas: 1
   maxReplicas: 3
   targetCPUUtilizationPercentage: 70
-
 resources:
   requests:
     cpu: 100m
