@@ -18,6 +18,11 @@ spec:
         app: {{ include "demo-app.name" . }}
 
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: {{ include "demo-app.name" . }}
           image: {{ include "demo-app.image.repository" . }}:{{ include "demo-app.image.tag" . }}
@@ -29,3 +34,11 @@ spec:
               cpu: {{ .Values.resources.requests.cpu }}
             limits:
               cpu: {{ .Values.resources.limits.cpu }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault
